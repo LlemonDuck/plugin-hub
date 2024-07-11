@@ -23,7 +23,7 @@ There are two methods to create an external plugin, you can either:
  2. Name your repository something appropriate, in my case I will name it `helmet-check` with the description `You should always wear a helmet.` **Make sure that your repository is set to public**.
 
  3. In the top right, you will see a *Clone or download*-button. Click on it and copy the link.
-
+asdasdasd
  4. Open IntelliJ and choose *Get from Version Control*. Paste the link you just copied in the URL field and where you want to save it in the second field.
 
  5. In order to make sure everything works correctly, try to start the client with your external plugin enabled by running the provided test. If you don't have a run configuration yet for the test, attempt to run it by clicking `Run test`. This will create a run configuration and fail to run due to asserts being disabled. Add `-ea`
