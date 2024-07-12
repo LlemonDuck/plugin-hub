@@ -19,7 +19,7 @@ There are two methods to create an external plugin, you can either:
 
 ### Using the template repository
  1. Generate your own repository with [this](https://github.com/runelite/example-plugin/generate) link. You have to be logged in to GitHub.
- 
+ aagggrg
  2. Name your repository something appropriate, in my case I will name it `helmet-check` with the description `You should always wear a helmet.` **Make sure that your repository is set to public**.
 
  3. In the top right, you will see a *Clone or download*-button. Click on it and copy the link.
