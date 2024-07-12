@@ -1,4 +1,4 @@
-![](https://runelite.net/img/logo.png)
+  ea![](https://runelite.net/img/logo.png)
 # plugin-hub [![Discord](https://img.shields.io/discord/301497432909414422.svg)](https://discord.gg/mePCs8U)
 
 This repository contains markers for [RuneLite](https://github.com/runelite/runelite)
@@ -12,8 +12,7 @@ IntelliJ install Java (select `Eclipse Temurin`) or download it from https://ado
 
 ## Creating new plugins
 There are two methods to create an external plugin, you can either:
-
- - Use [this](https://github.com/runelite/example-plugin/) plugin template.
+E
 
  - Clone this repository and run the `create_new_plugin.py` script. This requires you to have `python3` installed
 
