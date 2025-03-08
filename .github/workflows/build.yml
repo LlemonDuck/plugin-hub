@@ -4,13 +4,14 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 0
-    - uses: actions/setup-java@v3
+    - uses: actions/setup-java@v4
       with:
         distribution: adopt
         java-version: 11
+        cache: gradle
     - name: prepare
       run: |
         git clone https://github.com/LlemonDuck/tombs-of-amascut.git
@@ -21,7 +22,7 @@ jobs:
         popd
         mkdir -p /tmp/jars
         cp ./tombs-of-amascut/build/libs/* /tmp/jars
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       if: ${{ github.event_name == 'pull_request' }}
       with:
         name: jars
