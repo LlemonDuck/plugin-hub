@@ -1,8 +1,6 @@
 on:
   pull_request:
   push:
-    branches:
-      - master
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -18,16 +16,31 @@ jobs:
     - name: prepare
       run: |
         git clone https://github.com/LlemonDuck/tombs-of-amascut.git
+        git clone https://github.com/LlemonDuck/fortis-colosseum.git
     - name: build
       run: |
         pushd ./tombs-of-amascut
           ./gradlew build
         popd
+        pushd ./fortis-colosseum
+          ./gradlew build
+        popd
         mkdir -p /tmp/jars
         cp ./tombs-of-amascut/build/libs/* /tmp/jars
+        cp ./fortis-colosseum/build/libs/* /tmp/jars
+        
+        sha256sum /tmp/jars/*
+        HASH1="$(sha256sum /tmp/jars/tombs-* | cut -d' ' -f1 | xxd -r -p | base64 -w0 | tr '/+' '_-' | tr -d '=')"
+        HASH2="$(sha256sum /tmp/jars/fortis-* | cut -d' ' -f1 | xxd -r -p | base64 -w0 | tr '/+' '_-' | tr -d '=')"
+        echo "{\"addJarData\": [{\"internalName\":\"tombs-of-amascut\",\"jarHash\":\"$HASH1\"},{\"internalName\":\"fortis-colosseum\",\"jarHash\":\"$HASH2\"}]}" > /tmp/manifest_diff
     - uses: actions/upload-artifact@v4
       if: ${{ github.event_name == 'pull_request' }}
       with:
         name: jars
         path: /tmp/jars
+        retention-days: 1
+    - uses: actions/upload-artifact@v4
+      with:
+        name: manifest_diff
+        path: /tmp/manifest_diff
         retention-days: 1
